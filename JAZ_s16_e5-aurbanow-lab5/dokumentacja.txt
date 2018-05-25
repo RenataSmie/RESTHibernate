@@ -1,0 +1,85 @@
+Renata Œmietanka s16139
+
+API Restowe dla sklepu internetowego z czêœciami komputerowymi
+
+URL: http://localhost:8080/samplerestapp/rest/product/
+
+Headers: 
+[{"key":"Content-Type","value":"application/json","description":"","enabled":true}]
+
+Dodanie nowego produktu:
+POST http://localhost:8080/samplerestapp/rest/products
+{
+	"name" : "Aorus GeForce GTX",
+	"category" : "Karty graficzne",
+	"price" : "899.10"
+}
+
+{
+	"name" : "ASUS MSI",
+	"category" : "Karty graficzne",
+	"price" : "1066.80"
+}
+
+{
+	"name" : "Biostar",
+	"category" : "P³yty g³ówne",
+	"price" : "7000.99"
+}
+
+{
+	"name" : "Dysk ABC",
+	"category" : "Dyski twarde",
+	"price" : "2000.99"
+}
+
+{
+	"name" : "Goodram",
+	"category" : "Pamieci RAM",
+	"price" : "80.98"
+}
+
+Wyœwietlania listy wszystkich produktów
+GET http://localhost:8080/samplerestapp/rest/products
+
+Wyœwietlenie produktu o podanym id
+GET http://localhost:8080/samplerestapp/rest/products/id
+
+Zaktualizowanie informacji o produkcie
+PUT http://localhost:8080/samplerestapp/rest/products/id
+
+{
+	"name" : "Aorus GeForce GTX",
+	"id" : 1,
+	"category" : "Karty graficzne",
+	"price" : "1000.10"
+}
+
+Wyszukiwanie produktów po:
+o Cenie (wartoœæ od-do)
+GET http://localhost:8080/samplerestapp/rest/products/byPrice/min/max
+np:
+GET http://localhost:8080/samplerestapp/rest/products/byPrice/1000/3000
+
+o Nazwie
+GET http://localhost:8080/samplerestapp/rest/products/byName/nazwa
+
+o Kategorii:
+GET http://localhost:8080/samplerestapp/rest/products/byCategory/{nazwaKategorii}
+	Karty graficzne
+GET http://localhost:8080/samplerestapp/rest/products/byCategory/Karty graficzne
+	P³yty g³ówne
+GET http://localhost:8080/samplerestapp/rest/products/byCategory/P³yty g³ówne
+	Dyski twarde
+GET http://localhost:8080/samplerestapp/rest/products/byCategory/Dyski twarde
+	Pamieci RAM
+GET http://localhost:8080/samplerestapp/rest/products/byCategory/Pamieci RAM
+
+Dodawania komentarzy o produkcie
+POST http://localhost:8080/samplerestapp/rest/products/{productId}/comments
+
+Wyœwietlenie komentarzy
+GET http://localhost:8080/samplerestapp/rest/products/{productId}/comments
+
+Usuwania komentarzy
+DELETE http://localhost:8080/samplerestapp/rest/{productId}/comments/{commentId}
